@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Interativo - Nautilis</title>
+    <meta name="description" content="Explore o mapa interativo dos oceanos do mundo. Clique em cada região oceânica para descobrir informações detalhadas.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'ocean-deep': '#003366',
+                        'ocean-blue': '#0066cc',
+                        'ocean-light': '#e6f3ff',
+                        'ocean-medium': '#004d99'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .ocean-region {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .ocean-region:hover {
+            filter: brightness(1.2) drop-shadow(0 0 10px rgba(0, 102, 204, 0.6));
+            transform: scale(1.05);
+        }
+        
+        .map-container {
+            position: relative;
+            overflow: hidden;
+            height: calc(100vh - 80px);
+        }
+        
+        .sidebar-overlay {
+            backdrop-filter: blur(4px);
+        }
+        
+        .zoom-controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body class="bg-white overflow-hidden">
+    <!-- Navegação -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="/" class="flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-ocean-blue rounded-full flex items-center justify-center">
+                        <span class="text-white text-xl">🌊</span>
+                    </div>
+                    <h1 class="text-2xl font-bold text-ocean-deep">Nautilis</h1>
+                </a>
+
+                <div class="hidden md:flex space-x-8">
+                    <a href="/" class="font-medium text-ocean-deep hover:text-ocean-blue transition-colors">Início</a>
+                    <a href="/mapa" class="font-medium text-ocean-blue">Mapa Interativo</a>
+                    <a href="/lista-oceanos" class="font-medium text-ocean-deep hover:text-ocean-blue transition-colors">Lista de Oceanos</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mapa Interativo -->
+    <section class="bg-white min-h-screen relative">
+        <div class="map-container">
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div id="world-map" class="relative w-full max-w-6xl aspect-video">
+                    
+                    <!-- Imagem de fundo -->
+                    <!-- <img 
+                        id="earth-image"
+                        src="https://unsplash.com/pt-br/fotografias/a-imagem-esta-completamente-em-branco-e-branca-JI_KuHFuaTE"
+                        alt="Visão satélite da Terra mostrando continentes e oceanos"
+                        class="w-full h-full object-cover rounded-2xl shadow-2xl transition-transform duration-300"
+                    > -->
+
+                    <!-- Regiões dos Oceanos -->
+                    <!-- Pacífico Norte -->
+                    <div class="ocean-region absolute bg-ocean-blue/30 rounded-full flex items-center justify-center"
+                         style="top: 18%; left: 1%; width: 16%; height: 28%; border-radius: 60% 40% 45% 35%;"
+                         data-ocean="pacific">
+                        <span class="text-white font-bold text-sm drop-shadow-lg">Pacífico Norte</span>
+                    </div>
+
+                    <!-- Pacífico Sul -->
+                    <div class="ocean-region absolute bg-ocean-blue/30 rounded-full flex items-center justify-center"
+                         style="top: 52%; left: 5%; width: 15%; height: 22%; border-radius: 45% 35% 40% 60%;"
+                         data-ocean="pacific">
+                        <span class="text-white font-bold text-sm drop-shadow-lg">Pacífico Sul</span>
+                    </div>
+
+                    <!-- Pacífico Oeste -->
+                    <div class="ocean-region absolute bg-ocean-blue/30 rounded-full flex items-center justify-center"
+                         style="top: 28%; right: 1%; width: 12%; height: 32%; border-radius: 40% 60% 35% 45%;"
+                         data-ocean="pacific">
+                        <span class="text-white font-bold text-sm drop-shadow-lg">Pacífico Oeste</span>
+                    </div>
+
+                    <!-- Atlântico Norte -->
+                    <div class="ocean-region absolute bg-ocean-blue/30 rounded-full flex items-center justify-center"
+                         style="top: 16%; left: 32%; width: 10%; height: 28%; border-radius: 35% 65% 45% 55%;"
+                         data-ocean="atlantic">
+                        <span class="text-white font-bold text-sm drop-shadow-lg">Atlântico Norte</span>
+                    </div>
+
+                    <!-- Atlântico Sul -->
+                    <div class="ocean-region absolute bg-ocean-blue/30 rounded-full flex items-center justify-center"
+                         style="top: 48%; left: 28%; width: 12%; height: 28%; border-radius: 55% 45% 35% 65%;"
+                         data-ocean="atlantic">
+                        <span class="text-white font-bold text-sm drop-shadow-lg">Atlântico Sul</span>
+                    </div>
+
+                    <!-- Oceano Índico -->
+                    <div class="ocean-region absolute bg-ocean-blue/30 rounded-full flex items-center justify-center"
+                         style="top: 38%; left: 52%; width: 15%; height: 32%; border-radius: 45% 55% 40% 50%;"
+                         data-ocean="indian">
+                        <span class="text-white font-bold text-sm drop-shadow-lg">Oceano Índico</span>
+                    </div>
+
+                    <!-- Oceano Ártico -->
+                    <div class="ocean-region absolute bg-ocean-blue/30 rounded-full flex items-center justify-center"
+                         style="top: 1%; left: 50%; transform: translateX(-50%); width: 28%; height: 14%; border-radius: 50%;"
+                         data-ocean="arctic">
+                        <span class="text-white font-bold text-sm drop-shadow-lg">Ártico</span>
+                    </div>
+
+                    <!-- Oceano Austral -->
+                    <div class="ocean-region absolute bg-ocean-blue/30 rounded-full flex items-center justify-center"
+                         style="bottom: 1%; left: 50%; transform: translateX(-50%); width: 35%; height: 12%; border-radius: 50%;"
+                         data-ocean="southern">
+                        <span class="text-white font-bold text-sm drop-shadow-lg">Austral</span>
+                    </div>
+
+                    <!-- Painéis Informativos -->
+                    <div class="absolute -top-4 left-4 bg-white/95 rounded-xl p-4 shadow-xl max-w-xs">
+                        <h3 class="font-bold text-ocean-deep text-base mb-3">🌊 Os 5 Oceanos da Terra</h3>
+                        <div class="space-y-2 text-xs">
+                            <div class="flex items-center justify-between">
+                                <span class="font-medium">Total de água:</span>
+                                <span class="text-ocean-blue">71% da Terra</span>
+                            </div>
+                            <div class="flex items-center space-x-2 pt-2 border-t">
+                                <div class="w-3 h-3 bg-ocean-blue rounded-full animate-pulse"></div>
+                                <span class="font-medium">Clique nas regiões para explorar</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ranking dos Oceanos -->
+                    <div class="absolute top-1 right-4 bg-white/95 rounded-xl p-4 shadow-xl">
+                        <h4 class="font-bold text-ocean-deep text-sm mb-3">Ranking por Tamanho</h4>
+                        <div class="space-y-1 text-xs">
+                            <div class="flex justify-between">
+                                <span>1. Pacífico</span>
+                                <span class="text-ocean-blue">165M km²</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>2. Atlântico</span>
+                                <span class="text-ocean-blue">82M km²</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>3. Índico</span>
+                                <span class="text-ocean-blue">71M km²</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>4. Austral</span>
+                                <span class="text-ocean-blue">20M km²</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>5. Ártico</span>
+                                <span class="text-ocean-blue">14M km²</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controles de Zoom -->
+        <div class="zoom-controls flex flex-col space-y-2">
+            <button id="zoom-in" class="bg-white hover:bg-gray-50 p-3 rounded-full shadow-lg transition-all border">
+                <span class="text-ocean-deep text-xl font-bold">+</span>
+            </button>
+            <button id="zoom-out" class="bg-white hover:bg-gray-50 p-3 rounded-full shadow-lg transition-all border">
+                <span class="text-ocean-deep text-xl font-bold">−</span>
+            </button>
+            <button id="zoom-reset" class="bg-white hover:bg-gray-50 p-3 rounded-full shadow-lg transition-all border">
+                <span class="text-ocean-deep text-lg">🏠</span>
+            </button>
+        </div>
+
+        <!-- Sidebar de Informações -->
+        <div id="ocean-sidebar" class="fixed top-0 right-0 h-full w-96 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-40">
+            <div class="p-8">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 id="sidebar-title" class="text-2xl font-bold text-ocean-deep"></h2>
+                    <button id="close-sidebar" class="text-gray-500 hover:text-gray-700">
+                        <span class="text-2xl">×</span>
+                    </button>
+                </div>
+
+                <img id="sidebar-image" src="" alt="" class="w-full h-48 object-cover rounded-lg mb-6">
+
+                <div id="sidebar-description" class="text-gray-700 mb-8 leading-relaxed"></div>
+
+                <div id="sidebar-stats" class="space-y-4 mb-8"></div>
+
+                <a id="sidebar-link" href="" class="block w-full bg-ocean-blue hover:bg-ocean-medium text-white font-semibold py-3 px-6 rounded-full text-center transition-colors">
+                    Ver mais detalhes
+                </a>
+            </div>
+        </div>
+
+        <!-- Overlay -->
+        <div id="sidebar-overlay" class="fixed inset-0 bg-black/20 sidebar-overlay opacity-0 pointer-events-none transition-opacity duration-300 z-30"></div>
+    </section>
+
+    <script src="js/mapa.js"></script>
+</body>
+</html>

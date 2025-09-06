@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="page-title">Oceano - Nautilis</title>
+  <meta name="description"
+    content="Explore informações detalhadas sobre este oceano, incluindo características, vida marinha e curiosidades fascinantes.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'ocean-deep': '#003366',
+            'ocean-blue': '#0066cc',
+            'ocean-light': '#e6f3ff',
+            'ocean-medium': '#004d99'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-white">
+  <!-- NAV -->
+  <nav class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <a href="/" class="flex items-center space-x-3">
+          <div class="w-12 h-12 bg-ocean-blue rounded-full flex items-center justify-center">
+            <span class="text-white text-xl">🌊</span>
+          </div>
+          <h1 class="text-2xl font-bold text-ocean-deep">Nautilis</h1>
+        </a>
+
+        <div class="hidden md:flex space-x-8">
+          <a href="/" class="font-medium text-ocean-deep hover:text-ocean-blue transition-colors">Início</a>
+          <a href="/mapa" class="font-medium text-ocean-deep hover:text-ocean-blue transition-colors">Mapa
+            Interativo</a>
+          <a href="/lista-oceanos" class="font-medium text-ocean-deep hover:text-ocean-blue transition-colors">Lista de
+            Oceanos</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- LOADING -->
+  <div id="loading" class="min-h-screen flex items-center justify-center">
+    <div class="text-center">
+      <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-ocean-blue mx-auto"></div>
+      <p class="mt-4 text-gray-600">Carregando informações do oceano...</p>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div id="ocean-content" class="py-20 bg-white min-h-screen hidden">
+    <div class="max-w-6xl mx-auto px-4">
+      <!-- Voltar -->
+      <div class="mb-8">
+        <a href="/mapa"
+          class="inline-flex items-center space-x-2 text-ocean-blue hover:text-ocean-medium transition-colors">
+          <span class="text-lg">←</span><span>Voltar ao mapa</span>
+        </a>
+      </div>
+
+      <!-- Header -->
+      <header class="text-center mb-12">
+        <h1 id="ocean-title" class="text-5xl md:text-6xl font-bold text-ocean-deep mb-4"></h1>
+        <p id="ocean-subtitle" class="text-xl text-gray-600 max-w-4xl mx-auto"></p>
+      </header>
+
+      <!-- Hero image -->
+      <section class="mb-12">
+        <img id="ocean-hero-image" src="" alt="" class="w-full h-96 object-cover rounded-2xl shadow-2xl" />
+      </section>
+
+      <!-- Stats -->
+      <section id="section-stats" class="mb-12">
+        <div id="ocean-stats" class="grid md:grid-cols-4 gap-8">
+          <!-- preenchido via JS -->
+        </div>
+      </section>
+
+      <!-- Top description -->
+      <section id="section-description" class="mb-12 max-w-4xl mx-auto text-center">
+        <p id="ocean-description" class="text-lg text-gray-700 leading-relaxed"></p>
+      </section>
+
+      <!-- Countries & Rivers -->
+      <section class="grid lg:grid-cols-2 gap-10 mb-12">
+        <div>
+          <h2 class="text-2xl font-bold text-ocean-deep mb-4">Países que fazem fronteira</h2>
+          <ul id="ocean-countries" class="list-disc list-inside space-y-2 text-gray-700"></ul>
+        </div>
+        <div>
+          <h2 class="text-2xl font-bold text-ocean-deep mb-4">Rios que desaguam</h2>
+          <ul id="ocean-rivers" class="list-disc list-inside space-y-2 text-gray-700"></ul>
+        </div>
+      </section>
+
+      <!-- Características & Vida Marinha -->
+      <section class="grid lg:grid-cols-2 gap-16 mb-12">
+        <div>
+          <h2 class="text-2xl font-bold text-ocean-deep mb-4">Características Principais</h2>
+          <div id="ocean-characteristics" class="space-y-4 text-gray-700"></div>
+        </div>
+        <div>
+          <h2 class="text-2xl font-bold text-ocean-deep mb-4">Vida Marinha (visão geral)</h2>
+          <div id="ocean-marine-life" class="space-y-4 text-gray-700"></div>
+        </div>
+      </section>
+
+      <!-- Animais: 4 categorias em cards -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-ocean-deep mb-6 text-center">Animais</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-xl font-semibold text-ocean-deep mb-4">Em Extinção</h3>
+            <div id="animals-endangered" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-semibold text-ocean-deep mb-4">Importantes para a área</h3>
+            <div id="animals-important" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-semibold text-ocean-deep mb-4">Pouco conhecidos</h3>
+            <div id="animals-rare" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-semibold text-ocean-deep mb-4">Mais conhecidos</h3>
+            <div id="animals-popular" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Temperatura por estação -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-ocean-deep mb-4 text-center">Temperatura por Estação</h2>
+        <div class="overflow-x-auto">
+          <table id="ocean-temperature" class="w-full text-left border-collapse">
+            <thead class="bg-ocean-light">
+              <tr>
+                <th class="p-3 border">Estação</th>
+                <th class="p-3 border">Temperatura Média</th>
+              </tr>
+            </thead>
+            <tbody class="text-gray-700"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Correntes -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-ocean-deep mb-4">Correntes Marítimas</h2>
+        <ul id="ocean-currents" class="list-disc list-inside space-y-2 text-gray-700"></ul>
+      </section>
+
+      <!-- El Niño / La Niña (só exibe se tiver dados) -->
+      <section id="section-el-nino" class="mb-12 hidden">
+        <h2 class="text-2xl font-bold text-ocean-deep mb-4">El Niño & La Niña</h2>
+        <div id="ocean-el-nino" class="text-gray-700 leading-relaxed"></div>
+      </section>
+
+      <!-- Curiosidades -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-ocean-deep mb-4 text-center">Curiosidades Fascinantes</h2>
+        <div id="ocean-fun-facts" class="grid md:grid-cols-2 gap-6"></div>
+      </section>
+
+      <!-- Fatos Históricos -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-ocean-deep mb-4 text-center">Contexto Histórico</h2>
+        <ul id="ocean-historical-facts" class="list-disc list-inside space-y-2 text-gray-700"></ul>
+      </section>
+
+      <!-- Outras Informações -->
+      <section id="section-other-info" class="mb-12">
+        <h2 class="text-2xl font-bold text-ocean-deep mb-4 text-center"></h2>
+        <div id="ocean-other-info" class="prose max-w-none text-gray-700"></div>
+      </section>
+
+      <!-- Outras Fontes -->
+      <section id="section-sources" class="mb-12">
+        <h2 class="text-2xl font-bold text-ocean-deep mb-4 text-center">Outras Fontes</h2>
+        <ul id="ocean-sources" class="list-inside space-y-2 text-gray-700"></ul>
+      </section>
+
+      <!-- Navegação entre oceanos -->
+      <div class="text-center mt-8">
+        <h3 class="text-2xl font-bold text-ocean-deep mb-6">Explore Outros Oceanos</h3>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="/oceano/pacific"
+            class="bg-ocean-blue hover:bg-ocean-medium text-white px-6 py-3 rounded-full transition-colors">Pacífico</a>
+          <a href="/oceano/atlantic"
+            class="bg-ocean-blue hover:bg-ocean-medium text-white px-6 py-3 rounded-full transition-colors">Atlântico</a>
+          <a href="/oceano/indian"
+            class="bg-ocean-blue hover:bg-ocean-medium text-white px-6 py-3 rounded-full transition-colors">Índico</a>
+          <a href="/oceano/arctic"
+            class="bg-ocean-blue hover:bg-ocean-medium text-white px-6 py-3 rounded-full transition-colors">Ártico</a>
+          <a href="/oceano/southern"
+            class="bg-ocean-blue hover:bg-ocean-medium text-white px-6 py-3 rounded-full transition-colors">Austral</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ERROR -->
+  <div id="error-content" class="min-h-screen flex items-center justify-center hidden">
+    <div class="text-center">
+      <span class="text-6xl">🌊</span>
+      <h2 class="text-3xl font-bold text-ocean-deep mt-4 mb-2">Oceano não encontrado</h2>
+      <p class="text-gray-600 mb-6">O oceano que você está procurando não existe.</p>
+      <a href="/mapa"
+        class="bg-ocean-blue hover:bg-ocean-medium text-white px-6 py-3 rounded-full transition-colors">Voltar ao
+        Mapa</a>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script>
+    // placeholders / imagens fallback
+    const PLACEHOLDER_ANIMAL = "https://placehold.co/400x250/png?text=Imagem+Animal";
+    const DEFAULT_HERO = "https://placehold.co/1200x600/png?text=Imagem+do+Oceano";
+
+    const oceanImages = {
+      pacific: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?auto=format&fit=crop&w=1200&q=80',
+      atlantic: 'https://images.unsplash.com/photo-1505142468610-359e7d316be0?auto=format&fit=crop&w=1200&q=80',
+      indian: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1200&q=80',
+      arctic: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1200&q=80',
+      southern: 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=1200&q=80'
+    };
+
+    function getOceanIdFromUrl() {
+      const path = window.location.pathname;
+      const parts = path.split('/');
+      return parts[parts.length - 1] || parts[parts.length - 2];
+    }
+
+    async function loadOceanData() {
+      const oceanId = getOceanIdFromUrl();
+      try {
+        const response = await fetch(`/api/oceano/${oceanId}`);
+        if (!response.ok) throw new Error('Oceano não encontrado');
+        const ocean = await response.json();
+        displayOceanData(ocean);
+      } catch (err) {
+        console.error(err);
+        showError();
+      }
+    }
+
+    function safeArray(v) {
+      if (!v) return [];
+      if (Array.isArray(v)) return v;
+      if (typeof v === 'string') return v ? [v] : [];
+      return [];
+    }
+
+    function createAnimalCard(animal) {
+      // animal: { name, img, summary, id? }
+      const img = animal.img || PLACEHOLDER_ANIMAL;
+      const name = animal.name || 'Nome desconhecido';
+      const summary = animal.summary || '';
+      const wrapper = document.createElement('div');
+      wrapper.className = "bg-white rounded-lg overflow-hidden shadow p-3 flex flex-col";
+
+      wrapper.innerHTML = `
+        <div class="h-40 w-full overflow-hidden rounded-md mb-3">
+          <img src="${img}" alt="${name}" class="w-full h-full object-cover">
+        </div>
+        <h4 class="font-semibold text-ocean-deep mb-1">${name}</h4>
+        <p class="text-sm text-gray-600 flex-1">${summary}</p>
+      `;
+      return wrapper;
+    }
+
+    function displayOceanData(ocean) {
+      if (!ocean) return showError();
+
+      // Title & meta
+      document.getElementById('page-title').textContent = `${ocean.name} - Nautilis`;
+      document.title = `${ocean.name} - Nautilis`;
+
+      // Header fields
+      document.getElementById('ocean-title').textContent = ocean.name || '';
+      document.getElementById('ocean-subtitle').textContent = ocean.subtitle || '';
+
+      // Hero image
+      const hero = document.getElementById('ocean-hero-image');
+      hero.src = (ocean.heroImage) ? ocean.heroImage : (oceanImages[ocean.id] || DEFAULT_HERO);
+      hero.alt = `${ocean.name} - imagem`;
+
+      // Stats (area, maxDepth, avgTemp, volume) - safe parsing
+      const stats = [];
+      if (ocean.area) stats.push({ value: ocean.area, label: 'Área' });
+      if (ocean.maxDepth) stats.push({ value: ocean.maxDepth, label: 'Profundidade máxima' });
+      if (ocean.avgTemp) stats.push({ value: ocean.avgTemp, label: 'Temperatura média' });
+      if (ocean.volume) stats.push({ value: ocean.volume, label: 'Volume' });
+
+      const statsContainer = document.getElementById('ocean-stats');
+      statsContainer.innerHTML = stats.map(s => `
+        <div class="bg-gradient-to-br from-ocean-light to-white p-6 rounded-2xl text-center">
+          <div class="text-2xl md:text-3xl font-bold text-ocean-deep mb-1">${s.value}</div>
+          <div class="text-sm text-ocean-deep/70">${s.label}</div>
+        </div>
+      `).join('');
+
+      // Top description
+      document.getElementById('ocean-description').textContent = ocean.description || '';
+
+      // Countries & Rivers
+      const countriesList = document.getElementById('ocean-countries');
+      countriesList.innerHTML = safeArray(ocean.countries).map(c => `<li>${c}</li>`).join('') || `<li class="text-gray-500">Informação não disponível</li>`;
+
+      const riversList = document.getElementById('ocean-rivers');
+      riversList.innerHTML = safeArray(ocean.rivers).map(r => `<li>${r}</li>`).join('') || `<li class="text-gray-500">Informação não disponível</li>`;
+
+      // Characteristics
+      const charContainer = document.getElementById('ocean-characteristics');
+      charContainer.innerHTML = safeArray(ocean.characteristics).map(ch => `<p class="text-gray-700">• ${ch}</p>`).join('') || `<p class="text-gray-500">Sem informações de características.</p>`;
+
+      // Marine life (overview)
+      const marineLifeContainer = document.getElementById('ocean-marine-life');
+      marineLifeContainer.innerHTML = safeArray(ocean.marineLife).map(m => `<p class="text-gray-700">• ${m}</p>`).join('') || `<p class="text-gray-500">Sem visão geral da vida marinha.</p>`;
+
+      // Animals: each category is an array of objects { name, img, summary }
+      const animals = ocean.animals || {};
+      const mapAnimal = a => (typeof a === 'string') ? { name: a } : a || {};
+
+      const renderAnimalCategory = (selectorId, arr) => {
+        const container = document.getElementById(selectorId);
+        container.innerHTML = '';
+        const items = safeArray(arr).slice(0, 6).map(mapAnimal);
+        if (items.length === 0) {
+          container.innerHTML = `<p class="text-gray-500">Nenhum registro.</p>`;
+          return;
+        }
+        items.forEach(item => container.appendChild(createAnimalCard(item)));
+      };
+
+      renderAnimalCategory('animals-endangered', animals.endangered);
+      renderAnimalCategory('animals-important', animals.important);
+      renderAnimalCategory('animals-rare', animals.rare);
+      renderAnimalCategory('animals-popular', animals.popular);
+
+      // Temperature - supports array of {season,value} or object {spring:..., summer:...}
+      const tempTbody = document.querySelector('#ocean-temperature tbody');
+      tempTbody.innerHTML = '';
+      if (ocean.temperature) {
+        if (Array.isArray(ocean.temperature)) {
+          ocean.temperature.forEach(t => {
+            const season = t.season || t.name || '—';
+            const value = t.value || t.temp || '—';
+            tempTbody.insertAdjacentHTML('beforeend', `<tr><td class="p-3 border">${season}</td><td class="p-3 border">${value}</td></tr>`);
+          });
+        } else if (typeof ocean.temperature === 'object') {
+          Object.entries(ocean.temperature).forEach(([season, value]) => {
+            tempTbody.insertAdjacentHTML('beforeend', `<tr><td class="p-3 border">${season}</td><td class="p-3 border">${value}</td></tr>`);
+          });
+        }
+      } else {
+        tempTbody.innerHTML = `<tr><td class="p-3 border" colspan="2">Informação não disponível</td></tr>`;
+      }
+
+      // Correntes
+      const currentsList = document.getElementById('ocean-currents');
+      currentsList.innerHTML = safeArray(ocean.currents).map(c => `<li>${c}</li>`).join('') || `<li class="text-gray-500">Informação não disponível</li>`;
+
+      // El Niño / La Niña - show section only if data exists
+      const elNinoSection = document.getElementById('section-el-nino');
+      const elNinoContainer = document.getElementById('ocean-el-nino');
+      if (ocean.elNino || ocean.laNina || ocean.elNinoLaNina) {
+        elNinoSection.classList.remove('hidden');
+        const parts = [];
+        if (ocean.elNino) parts.push(`<strong>El Niño:</strong> ${ocean.elNino}`);
+        if (ocean.laNina) parts.push(`<strong>La Niña:</strong> ${ocean.laNina}`);
+        if (ocean.elNinoLaNina) parts.push(`${ocean.elNinoLaNina}`);
+        elNinoContainer.innerHTML = parts.join('<br/><br/>');
+      } else {
+        elNinoSection.classList.add('hidden');
+      }
+
+      // Curiosidades - as cards
+      const funFactsContainer = document.getElementById('ocean-fun-facts');
+      funFactsContainer.innerHTML = '';
+      const funFacts = safeArray(ocean.funFacts);
+      if (funFacts.length === 0) {
+        funFactsContainer.innerHTML = `<div class="p-6 bg-white rounded-lg shadow text-gray-500">Sem curiosidades cadastradas.</div>`;
+      } else {
+        funFacts.slice(0, 8).forEach(f => {
+          funFactsContainer.insertAdjacentHTML('beforeend', `
+            <div class="p-6 bg-white rounded-lg shadow">
+              <p class="text-gray-700 leading-relaxed">💡 ${f}</p>
+            </div>
+          `);
+        });
+      }
+
+      // Fatos históricos
+      const histList = document.getElementById('ocean-historical-facts');
+      histList.innerHTML = safeArray(ocean.historicalFacts).map(h => `<li>${h}</li>`).join('') || `<li class="text-gray-500">Sem fatos históricos registrados.</li>`;
+
+      // --- NOVAS SEÇÕES ---
+
+      // Outras Informações (aceita string ou array/html)
+      const otherInfoContainer = document.getElementById('ocean-other-info');
+      otherInfoContainer.innerHTML = '';
+      if (ocean.otherInfo) {
+        if (typeof ocean.otherInfo === 'string') {
+          otherInfoContainer.innerHTML = `<p class="text-gray-700 leading-relaxed">${ocean.otherInfo}</p>`;
+        } else if (Array.isArray(ocean.otherInfo)) {
+          otherInfoContainer.innerHTML = ocean.otherInfo.map(item => `<p class="text-gray-700 leading-relaxed">• ${item}</p>`).join('');
+        } else if (typeof ocean.otherInfo === 'object') {
+          // if user provides HTML-safe content object with fields, try to show JSON-like
+          otherInfoContainer.innerHTML = `<pre class="whitespace-pre-wrap text-sm text-gray-700">${JSON.stringify(ocean.otherInfo, null, 2)}</pre>`;
+        }
+      } else {
+        otherInfoContainer.innerHTML = `<p class="text-gray-500">Nenhuma informação adicional cadastrada.</p>`;
+      }
+
+      // Outras Fontes - supports array of strings or array of {title, url}
+      const sourcesList = document.getElementById('ocean-sources');
+      sourcesList.innerHTML = '';
+      const sources = safeArray(ocean.sources);
+      if (sources.length === 0) {
+        sourcesList.innerHTML = `<li class="text-gray-500">Nenhuma fonte cadastrada.</li>`;
+      } else {
+        sources.slice(0, 12).forEach(s => {
+          if (typeof s === 'string') {
+            // if string looks like a URL, show as link; otherwise show plain text
+            const isUrl = /^https?:\/\//i.test(s);
+            if (isUrl) {
+              sourcesList.insertAdjacentHTML('beforeend', `<li><a href="${s}" target="_blank" rel="noopener noreferrer" class="text-ocean-blue hover:underline">${s}</a></li>`);
+            } else {
+              sourcesList.insertAdjacentHTML('beforeend', `<li>${s}</li>`);
+            }
+          } else if (typeof s === 'object' && s.url) {
+            const title = s.title || s.url;
+            sourcesList.insertAdjacentHTML('beforeend', `<li><a href="${s.url}" target="_blank" rel="noopener noreferrer" class="text-ocean-blue hover:underline">${title}</a></li>`);
+          } else {
+            sourcesList.insertAdjacentHTML('beforeend', `<li>${JSON.stringify(s)}</li>`);
+          }
+        });
+      }
+
+      // Show content, hide loading
+      document.getElementById('loading').classList.add('hidden');
+      document.getElementById('ocean-content').classList.remove('hidden');
+    }
+
+    function showError() {
+      document.getElementById('loading').classList.add('hidden');
+      document.getElementById('error-content').classList.remove('hidden');
+    }
+
+    document.addEventListener('DOMContentLoaded', loadOceanData);
+  </script>
+</body>
+
+</html>

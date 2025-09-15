@@ -334,13 +334,14 @@ const oceanData = {
     ],
 
     countries: [
-      "África: África do Sul, Egito, Ilhas Maurício, Quênia, Comores, Eritreia, Seicheles, Somália, Departamento de Mayotte, Ilha da Reunião, Madagascar, Sudão, Djibuti, Ilhas do Príncipe Eduardo, Moçambique, Tanzânia.",
-      "Ásia: Arábia Saudita, Kuwait, Indonésia, Omã, Bangladesh, Iêmen, Irã, Paquistão, Barém, Ilhas Cocos, Iraque (Costa do Golfo/Península do Sinai), Mianmar (Birmânia), Ilha Christmas, Israel, Sri Lanka, Catar, Ilhas Maldivas, Jordânia, Tailândia, Emirados Árabes Unidos, Índia, Malásia, Timor-Leste.",
+      "África: África do Sul, Moçambique, Tanzânia, Quênia, Somália, Djibouti, Eritreia, Seicheles, Madagascar, Maurícia, Comores.",
+      "Ásia: Iêmen, Omã, Emirados Árabes Unidos, Qatar, Arábia Saudita, Irã, Paquistão, Índia, Maldivas, Sri Lanka, Bangladesh, Tailândia, Myanmar, Indonésia.",
       "Oceania: Austrália, Ilhas Ashmore e Cartier, Ilhas Heard e McDonald.",
     ],
 
     rivers: [
-      // Sem dados fornecidos — ficará vazio até receber informações específicas.
+      "Ásia (bacias que desaguam no Índico / Baía de Bengala / Mar da Arábia): Rio Ganges, Rio Brahmaputra, Rio Meghna, Rio Indus, Rio Godavari, Rio Krishna, Rio Mahanadi, Rio Kaveri (Cauvery).",
+      "África / Ilhas: Rio Zambeze (deságua no Canal de Moçambique), Rio Limpopo (sul da África), Rio Rufiji (Tanzânia), Rio Ruvuma (Madagáscar/Moçambique região), rios menores que drenam ilhas como Madagascar e Seicheles.",
     ],
 
     animals: {
@@ -349,7 +350,7 @@ const oceanData = {
           name: "Bodião-de-cabeça-corcunda (Cheilinus undulatus)",
           img: "https://oeco.org.br/wp-content/uploads/oeco-migration/images/stories/out2014/peixe-napoleao.jpg",
           summary:
-            "Também conhecido como peixe-napoleão, habita recifes do Indo-Pacífico; espécies ameaçadas devido à sobrepesca e ao comércio de peixes vivos.",
+            "Também conhecido como peixe-napoleão, habita recifes do Indo-Pacífico; espécies ameaçadas devido à sobrepesca, captura para comércio de peixes vivos e perda de habitat.",
         },
         {
           name: "Caranguejo-do-coqueiro (Birgus latro)",
@@ -361,39 +362,79 @@ const oceanData = {
           name: "Peixe-papagaio (espécies de Scaridae)",
           img: "https://meusanimais.com.br/wp-content/uploads/2021/07/peixe-papagaio-azul-amarelo.jpg?auto=webp&quality=7500&width=1920&crop=16:9,smart,safe&format=webp&optimize=medium&dpr=2&fit=cover&fm=webp&q=75&w=1920&h=1080",
           summary:
-            "Grupo de peixes fundamentais para a saúde dos recifes (controle de algas e reciclagem de sedimentos); várias espécies estão em declínio por pesca e destruição de habitat.",
+            "Grupo de peixes fundamentais para a saúde dos recifes (controle de algas e reciclagem de sedimentos); várias espécies estão em declínio por pesca, turismo irresponsável e degradação de corais.",
         },
       ],
       important: [
-        // Sem dados específicos fornecidos — preservar vazio até receber informação.
+        {
+          name: "Atum-rabilho (Thunnus tonggol)",
+          img: "https://conexaoplaneta.com.br/wp-content/uploads/2024/07/atum-rabilho-do-pacifico-foto-NOAA.jpeg",
+          summary:
+            "Peixe pelágico de grande importância comercial no Índico; sustenta pescarias costeiras e industriais, sendo vital para comunidades pesqueiras regionais.",
+        },
+        {
+          name: "Camarão-de-água-quente (gênero Penaeus)",
+          img: "https://upload.wikimedia.org/wikipedia/commons/1/13/CSIRO_ScienceImage_2844_A_Prawn.jpg",
+          summary:
+            "Diversas espécies de camarão que sustentam pesqueiras costeiras e aquicultura no Índico, com grande valor econômico e social.",
+        },
+        {
+          name: "Cavalinha / Sardinha (espécies pelágicas)",
+          img: "https://img.odcdn.com.br/wp-content/uploads/2021/08/shutterstock_1376628260.jpg",
+          summary:
+            "Pequenas pelágicas que formam a base de cadeias alimentares costeiras, essenciais para a pesca local e para alimentar predadores maiores.",
+        },
       ],
       rare: [
-        // Sem dados específicos fornecidos — preservar vazio até receber informação.
+        {
+          name: "Lula-vampiro-do-índico (Vampyroteuthis)",
+          img: "https://inaturalist-open-data.s3.amazonaws.com/photos/151647602/original.jpg",
+          summary:
+            "Habita águas profundas, em zonas de baixo oxigênio; corpo gelatinoso e manto avermelhado. Alimenta-se principalmente de 'neve marinha' (matéria orgânica que desce das camadas superiores).",
+        },
+        {
+          name: "Camarão-mantis-pavão (Stomatopoda spp.)",
+          img: "https://i.redd.it/peacock-mantis-shrimp-being-gorgeous-v0-utw9h07vbxcb1.jpg?width=3000&format=pjpg&auto=webp&s=de0fe4d79460eeac9d589d0130e95692bd1b1c61",
+          summary:
+            "Crustáceo de cores vibrantes encontrado em recifes do Índico; famoso pelas garras poderosas e visão complexa (capaz de perceber luz polarizada e UV).",
+        },
+        {
+          name: "Peixe-morcego-indiano (familia Ogcocephalidae)",
+          img: "https://static.inaturalist.org/photos/148329533/large.jpg",
+          summary:
+            "Peixe bentônico de aparência curiosa, que 'caminha' no fundo usando nadadeiras modificadas; se alimenta de pequenos invertebrados bentônicos.",
+        },
+        {
+          name: "Tartaruga-de-pente (Eretmochelys imbricata)",
+          img: "https://upload.wikimedia.org/wikipedia/commons/b/ba/Hawksbill_Turtle.jpg",
+          summary:
+            "Habita recifes do Índico; controla populações de esponjas e contribui para a saúde dos recifes. Criticamente ameaçada por caça, perda de habitat e coleta de ninhos.",
+        },
       ],
       popular: [
         {
           name: "Golfinho-rotador (Stenella longirostris)",
           img: "https://golfinhorotador.org.br/wp-content/uploads/2017/03/sociobiologia.jpg",
           summary:
-            "Espécie carismática das águas tropicais do Índico (Maldivas, Seychelles, Tanzânia), conhecida por saltos e giros acrobáticos; indicador da saúde de ecossistemas costeiros.",
+            "Espécie carismática das águas tropicais do Índico (Maldivas, Seychelles, Tanzânia), conhecida por acrobacias e giros no ar; frequentemente usada como indicador da saúde de áreas costeiras.",
         },
         {
           name: "Tubarão-baleia (Rhincodon typus)",
           img: "https://conexaoplaneta.com.br/wp-content/uploads/2016/07/tubarao-baleia-lista-animais-ameacados-extincao-800.jpg",
           summary:
-            "Maior peixe do mundo; filtra plâncton em águas tropicais do Índico; espécie migratória e foco de turismo de observação responsável.",
+            "Maior peixe do mundo; filtra plâncton em águas tropicais do Índico; importante para ecoturismo e conservação marinha.",
         },
         {
           name: "Tartaruga-verde (Chelonia mydas)",
           img: "https://www.infoescola.com/wp-content/uploads/2013/09/tartaruga-verde.jpg",
           summary:
-            "Comum em praias e recifes do Índico; realiza longas migrações e é importante para a manutenção de pradarias marinhas.",
+            "Comum em praias e recifes do Índico; realiza longas migrações e mantém pradarias marinhas saudáveis, sendo alvo de programas de conservação.",
         },
         {
           name: "Polvo-comum (Octopus vulgaris)",
           img: "https://c.files.bbci.co.uk/11F73/production/_120878537_4cfca0d7-2b27-474f-93b7-4c31269c5cdf.jpg",
           summary:
-            "Invertebrado inteligente presente em recifes e fundos rochosos do Índico; predador eficiente de crustáceos e moluscos.",
+            "Invertebrado inteligente presente em recifes e fundos rochosos do Índico; predador oportunista com comportamentos complexos.",
         },
       ],
     },
@@ -410,7 +451,9 @@ const oceanData = {
     },
 
     currents: [
-      // Sem dados específicos fornecidos — ficará vazio até receber informações.
+      "O sistema de correntes do Índico é altamente influenciado pelas monções sazonais, fazendo com que muitas correntes mudem de direção ao longo do ano. Essa dinâmica afeta circulação superficial, transporte de nutrientes e padrões de migração.",
+      "Correntes principais: Corrente das Monções (variável conforme a estação), Corrente da Somália (inverte o fluxo entre verão e inverno), Corrente do Sudoeste da Índia (água quente que transporta calor para o norte durante o verão do hemisfério sul), Corrente do Leste de Madagascar, Corrente do Oeste da Austrália (mais fria) e a Conexão com a Corrente Circumpolar Antártica no extremo sul.",
+      "Importância: além de modular o clima regional (monções e chuvas), essas correntes alimentam ressurgências ricas em nutrientes, sustentando importantes áreas pesqueiras e biodiversidade costeira.",
     ],
 
     funFacts: [
@@ -422,11 +465,13 @@ const oceanData = {
     ],
 
     historicalFacts: [
-      "O Oceano Índico desempenha um papel central na história das trocas intercontinentais desde a Antiguidade. Suas rotas marítimas ligavam as civilizações do Mediterrâneo, Península Arábica, África Oriental, Índia e Sudeste Asiático, facilitando o comércio de especiarias, tecidos, metais e ideias. Rotas comerciais já aparecem em registros egípcios e mesopotâmicos, e os portos ao longo da costa africana e da Península Arábica eram pontos-chave para caravanas e embarques marítimos.</br></br>Durante a Idade Média, a navegação indiana e árabe floresceu graças ao conhecimento preciso dos ventos sazonais (monções), o que permitia trajetórias de ida e volta relativamente previsíveis entre a África Oriental, a Península Arábica, a Índia e o Sudeste Asiático. Mercadores muçulmanos e indianos estabeleceram redes comerciais densas que promoveram trocas culturais e religiosas — entre elas a difusão do Islã por comércio e não só por conquista.</br></br>No fim do século XV, com a chegada dos europeus, o papel do Índico mudou profundamente. A expedição de Vasco da Gama (1497–1498) contornou a África e abriu a rota marítima direta para a Índia, iniciando uma era de competição colonial pelo controle das rotas de especiarias. Portugueses, depois holandeses, britânicos e franceses construíram postos, fortalezas e companhias comerciais que buscaram monopolizar o comércio regional.</br></br>O século XIX trouxe transformações mais rápidas: a abertura do Canal de Suez (1869) integrou definitivamente o Índico às rotas globais entre Europa e Ásia, tornando-o estratégico para transporte de mercadorias e, sobretudo, de petróleo do Golfo Pérsico. Bases navais e estações estratégicas cresceram em importância, e potências coloniais disputaram influência ao longo das costas e ilhas do Índico.</br></br>No século XX, o Índico tornou-se teatro de operações militares (primeira e segunda guerras mundiais) e, durante a Guerra Fria, de competição geopolítica entre blocos. Ao longo das últimas décadas, a região recuperou destaque por sua relevância no transporte global de energia (oleodutos e petroleiros), pela importância dos estreitos estratégicos (ex.: Estreito de Ormuz, Golfo de Aden) e por desafios como pirataria, tráfico e pressões ambientais.</br></br>Eventos geológicos e naturais também marcaram sua história: a atividade tectônica na região da Fossa de Java e outras falhas submarinas gerou tsunamis devastadores — o maior exemplo recente sendo o tsunami de 2004, que teve impactos humanos e econômicos profundos nas costas do Oceano Índico. Hoje, o Índico combina uma herança histórica de intensa conectividade cultural e comercial com desafios modernos — rivalidades geopolíticas, proteção das rotas de energia, conservação marinha e resiliência a desastres naturais.",
+      "O Oceano Índico desempenha um papel central na história das trocas intercontinentais desde a Antiguidade. Suas rotas marítimas ligavam as civilizações do Mediterrâneo, Península Arábica, África Oriental, Índia e Sudeste Asiático, facilitando o comércio de especiarias, tecidos, metais e ideias. Registros históricos associam portos africanos e árabes a rotas comerciais que antecedem a era cristã.</br></br>Durante a Idade Média, a navegação indiana e árabe floresceu graças ao conhecimento preciso das monções: marinheiros e mercadores sabiam quando zarpar e quando retornar, permitindo viagens regulares entre África Oriental, Península Arábica e o subcontinente indiano. Essas redes fomentaram trocas culturais, religiosas e tecnológicas ao longo do litoral e das ilhas.</br></br>No fim do século XV, a chegada dos europeus (Vasco da Gama em 1498) mudou a dinâmica do Índico, levando ao estabelecimento de feitorias, rotas coloniais e disputa entre portugueses, holandeses, britânicos e franceses pelo controle das trocas de especiarias. O século XIX intensificou a importância estratégica com a abertura do Canal de Suez (1869), conectando mais diretamente Europa e Ásia via Índico e transformando áreas-chave em pontos logísticos e militares.</br></br>O século XX consolidou o papel do Índico nas geopolíticas modernas: duas guerras mundiais, a Guerra Fria e a crescente demanda por petróleo do Golfo transformaram a região em corredor estratégico. Eventos naturais, como o tsunami de 2004 (resultado de atividade tectônica na região), marcaram o século XXI, ressaltando a vulnerabilidade das comunidades costeiras e a necessidade de esforços coordenados de monitoramento e resiliência.",
     ],
 
     otherInfo: [
-      // Campo deixado disponível para notas adicionais (preenchimento futuro).
+      "O regime de monções é crítico para a agricultura de países como Índia e Bangladesh e determina a janela de navegação para muitas rotas costeiras.",
+      "O Índico apresenta importantes estreitos e corredores marítimos estratégicos — por exemplo, o Estreito de Ormuz (via de petróleo), o Golfo de Aden e o Canal de Suez — cuja segurança é vital para o comércio global.",
+      "Desafios atuais: pirataria (em áreas específicas), pressões sobre estoques pesqueiros, degradação de recifes coralinos e riscos geológicos como terremotos submarinos e tsunamis.",
     ],
 
     sources: [
@@ -436,10 +481,6 @@ const oceanData = {
       "https://brasilescola.uol.com.br/geografia/oceano-indico.htm",
       "https://fatovirtual.com/oceano-indico-antiga-rota-das-civilizacoes-e-conexoes-globais/",
       "https://pt.estudyando.com/oceano-indico-localizacao-fatos-e-historia/",
-      "https://golfinhorotador.org.br/os-gofinhos/rotadores-de-noronha",
-      "https://biologo.com.br/bio/tubarao-baleia/",
-      "https://pt.wikipedia.org/wiki/Tartaruga-verde",
-      "https://c.files.bbci.co.uk/11F73/production/_120878537_4cfca0d7-2b27-474f-93b7-4c31269c5cdf.jpg",
       "https://repositorio.ulisboa.pt/bitstream/10400.5/19965/1/eBook_EstudosOceanoIndico.pdf",
       "https://estudogeral.uc.pt/bitstream/10316/87110/1/Oceano%20Indico_Dicionario%20Alice.pdf",
     ],

@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Animais - Nautilis</title>
+    <meta
+      name="description"
+      content="Lista de animais por categoria do oceano — em extinção, importantes, pouco conhecidos e mais conhecidos."
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "ocean-deep": "#003366",
+              "ocean-blue": "#0066cc",
+              "ocean-light": "#e6f3ff",
+              "ocean-medium": "#004d99",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      /* Carousel basic */
+      .carousel {
+        position: relative;
+      }
+      .carousel-track {
+        display: flex;
+        gap: 1rem;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        padding-bottom: 0.25rem;
+      }
+      .carousel-track::-webkit-scrollbar {
+        height: 8px;
+      }
+      .carousel-track::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.15);
+        border-radius: 999px;
+      }
+
+      .animal-card {
+        flex: 0 0 85%;
+        max-width: 85%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: #fff;
+        border-radius: 0.75rem;
+        overflow: hidden;
+        box-shadow: 0 6px 20px rgba(2, 6, 23, 0.08);
+      }
+
+      @media (min-width: 768px) {
+        .animal-card {
+          flex: 0 0 30%;
+          max-width: 30%;
+        }
+      }
+
+      .animal-media {
+        height: 180px;
+        overflow: hidden;
+      }
+      .animal-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .animal-body {
+        padding: 1rem;
+      }
+      .animal-body h4 {
+        margin-bottom: 0.4rem;
+      }
+      .animal-body p {
+        margin: 0;
+      }
+
+      .animal-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+        padding: 0.75rem 1rem;
+        border-top: 1px solid rgba(0, 0, 0, 0.04);
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.6),
+          rgba(255, 255, 255, 0.9)
+        );
+      }
+
+      .animal-category-badge {
+        background: rgba(0, 51, 102, 0.95);
+        color: #fff;
+        padding: 6px 10px;
+        font-size: 12px;
+        border-radius: 999px;
+        white-space: nowrap;
+      }
+
+      .carousel-controls {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        gap: 0.5rem;
+        z-index: 20;
+      }
+
+      .carousel-controls.left {
+        left: -0.6rem;
+      }
+      .carousel-controls.right {
+        right: -0.6rem;
+      }
+
+      .carousel-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 999px;
+        background: #fff;
+        box-shadow: 0 6px 18px rgba(2, 6, 23, 0.12);
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        cursor: pointer;
+      }
+
+      .no-items {
+        padding: 1.5rem;
+        background: #fff;
+        border-radius: 0.75rem;
+        box-shadow: 0 6px 20px rgba(2, 6, 23, 0.06);
+      }
+
+      /* small helper to keep visual spacing from badge to text */
+      .animal-body {
+        padding-bottom: 1.25rem;
+      }
+    </style>
+  </head>
+  <body class="bg-white text-gray-900">
+    <!-- NAV -->
+    <nav class="bg-white shadow sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+          <a href="/" class="flex items-center gap-3">
+            <div
+              class="w-12 h-12 bg-ocean-blue rounded-full flex items-center justify-center"
+            >
+              <span class="text-white text-xl">🌊</span>
+            </div>
+            <h1 class="text-2xl font-bold text-ocean-deep">Nautilis</h1>
+          </a>
+          <div class="hidden md:flex gap-8">
+            <a href="/" class="text-ocean-deep hover:text-ocean-blue">Início</a>
+            <a href="/mapa" class="text-ocean-deep hover:text-ocean-blue"
+              >Mapa Interativo</a
+            >
+            <a
+              href="/lista-oceanos"
+              class="text-ocean-deep hover:text-ocean-blue"
+              >Lista de Oceanos</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- MAIN -->
+    <main class="max-w-6xl mx-auto px-4 py-12">
+      <div class="mb-6">
+        <a
+          href="/mapa"
+          class="inline-flex items-center gap-2 text-ocean-blue hover:text-ocean-medium"
+        >
+          ← Voltar ao mapa
+        </a>
+      </div>
+
+      <header class="text-center mb-8">
+        <h2
+          id="ocean-name"
+          class="text-3xl md:text-4xl font-bold text-ocean-deep"
+        ></h2>
+        <p id="ocean-sub" class="text-gray-600 mt-2"></p>
+      </header>
+
+      <section id="animals-section" class="space-y-12">
+        <!-- Em Extinção -->
+        <div id="animals-endangered-section">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-2xl font-semibold text-ocean-deep">Em Extinção</h3>
+            <div class="text-sm text-gray-600" id="endangered-count"></div>
+          </div>
+
+          <div class="relative carousel">
+            <div class="carousel-controls left" aria-hidden="true">
+              <button
+                class="carousel-button"
+                data-target="endangered"
+                data-action="prev"
+                title="Anterior"
+              >
+                ‹
+              </button>
+            </div>
+
+            <div
+              id="endangered-track"
+              class="carousel-track"
+              aria-live="polite"
+            ></div>
+
+            <div class="carousel-controls right" aria-hidden="true">
+              <button
+                class="carousel-button"
+                data-target="endangered"
+                data-action="next"
+                title="Próximo"
+              >
+                ›
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Importantes -->
+        <div id="animals-important-section">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-2xl font-semibold text-ocean-deep">
+              Importantes para a área
+            </h3>
+            <div class="text-sm text-gray-600" id="important-count"></div>
+          </div>
+
+          <div class="relative carousel">
+            <div class="carousel-controls left" aria-hidden="true">
+              <button
+                class="carousel-button"
+                data-target="important"
+                data-action="prev"
+                title="Anterior"
+              >
+                ‹
+              </button>
+            </div>
+
+            <div
+              id="important-track"
+              class="carousel-track"
+              aria-live="polite"
+            ></div>
+
+            <div class="carousel-controls right" aria-hidden="true">
+              <button
+                class="carousel-button"
+                data-target="important"
+                data-action="next"
+                title="Próximo"
+              >
+                ›
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pouco conhecidos -->
+        <div id="animals-rare-section">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-2xl font-semibold text-ocean-deep">
+              Pouco conhecidos
+            </h3>
+            <div class="text-sm text-gray-600" id="rare-count"></div>
+          </div>
+
+          <div class="relative carousel">
+            <div class="carousel-controls left" aria-hidden="true">
+              <button
+                class="carousel-button"
+                data-target="rare"
+                data-action="prev"
+                title="Anterior"
+              >
+                ‹
+              </button>
+            </div>
+
+            <div
+              id="rare-track"
+              class="carousel-track"
+              aria-live="polite"
+            ></div>
+
+            <div class="carousel-controls right" aria-hidden="true">
+              <button
+                class="carousel-button"
+                data-target="rare"
+                data-action="next"
+                title="Próximo"
+              >
+                ›
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mais conhecidos -->
+        <div id="animals-popular-section">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-2xl font-semibold text-ocean-deep">
+              Mais conhecidos
+            </h3>
+            <div class="text-sm text-gray-600" id="popular-count"></div>
+          </div>
+
+          <div class="relative carousel">
+            <div class="carousel-controls left" aria-hidden="true">
+              <button
+                class="carousel-button"
+                data-target="popular"
+                data-action="prev"
+                title="Anterior"
+              >
+                ‹
+              </button>
+            </div>
+
+            <div
+              id="popular-track"
+              class="carousel-track"
+              aria-live="polite"
+            ></div>
+
+            <div class="carousel-controls right" aria-hidden="true">
+              <button
+                class="carousel-button"
+                data-target="popular"
+                data-action="next"
+                title="Próximo"
+              >
+                ›
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="mt-12 text-center">
+        <a
+          href="/oceano"
+          id="back-to-ocean"
+          class="inline-block bg-ocean-blue hover:bg-ocean-medium text-white px-6 py-3 rounded-full"
+          >Voltar</a
+        >
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-ocean-deep text-white py-16">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8">
+          <div class="col-span-2">
+            <div class="flex items-center space-x-3 mb-6">
+              <div
+                class="w-12 h-12 bg-ocean-blue rounded-full flex items-center justify-center"
+              >
+                <span class="text-white text-xl">🌊</span>
+              </div>
+              <h3 class="text-2xl font-bold">Nautilis</h3>
+            </div>
+            <p class="text-gray-300 mb-6 max-w-md">
+              Explore os oceanos do mundo de forma interativa e educativa.
+              Descubra as maravilhas que cobrem nosso planeta azul.
+            </p>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Explorar</h4>
+            <ul class="space-y-2 text-gray-300">
+              <li>
+                <a href="/mapa" class="hover:text-white transition-colors"
+                  >Mapa Interativo</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/lista-oceanos"
+                  class="hover:text-white transition-colors"
+                  >Lista de Oceanos</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Recursos</h4>
+            <ul class="space-y-2 text-gray-300">
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Guia do Professor</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Material Educativo</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Contato</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-600 pt-8 mt-12 text-center text-gray-400"
+        >
+          <p>&copy; 2025 Nautilis. Todos os direitos reservados.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- TEMPLATE / SCRIPTS -->
+    <script>
+      const PLACEHOLDER_ANIMAL =
+        "https://placehold.co/800x450/png?text=Imagem+Animal";
+      const MAX_PER_CATEGORY = 6;
+
+      function getOceanIdFromUrl() {
+        const path = window.location.pathname.split("/").filter(Boolean);
+        // expected /oceano/:id/animais
+        const idx = path.indexOf("oceano");
+        if (idx >= 0 && path.length > idx + 1) return path[idx + 1];
+        return path[path.length - 2] || path[path.length - 1] || "";
+      }
+
+      function safeArray(v) {
+        if (!v) return [];
+        if (Array.isArray(v)) return v;
+        if (typeof v === "string") return v ? [v] : [];
+        return [];
+      }
+
+      function createAnimalCard(animal, categoryLabel) {
+        const img =
+          animal.img || animal.image || animal.photo || PLACEHOLDER_ANIMAL;
+        const name = animal.name || animal.title || "Nome desconhecido";
+        const summary =
+          animal.summary || animal.desc || animal.description || "";
+
+        const card = document.createElement("article");
+        card.className = "animal-card";
+
+        card.innerHTML = `
+        <div class="animal-media">
+          <img src="${img}" alt="${escapeHtml(name)}" loading="lazy" />
+        </div>
+        <div class="animal-body">
+          <h4 class="text-lg font-semibold text-ocean-deep">${escapeHtml(
+            name
+          )}</h4>
+          <p class="text-sm text-gray-700">${escapeHtml(
+            truncate(summary, 180)
+          )}</p>
+        </div>
+        <div class="animal-footer">
+          <a class="text-sm text-ocean-blue hover:underline" href="/oceano/${encodeURIComponent(
+            getOceanIdFromUrl()
+          )}/animais/${encodeURIComponent(
+          (animal.id || animal.name || "")
+            .toString()
+            .toLowerCase()
+            .replace(/\s+/g, "-")
+        )}">
+            Ver (em breve)
+          </a>
+          <span class="animal-category-badge">${escapeHtml(
+            categoryLabel
+          )}</span>
+        </div>
+      `;
+        return card;
+      }
+
+      function truncate(str, n) {
+        if (!str) return "";
+        return str.length > n ? str.slice(0, n - 1) + "…" : str;
+      }
+
+      function escapeHtml(s) {
+        if (!s) return "";
+        return s.replace(/[&<>"']/g, function (m) {
+          return {
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;",
+          }[m];
+        });
+      }
+
+      // scroll helpers for carousels
+      function scrollCarousel(track, direction = "next") {
+        // amount = width of one card + gap
+        const card = track.querySelector(".animal-card");
+        if (!card) return;
+        const cardStyle = getComputedStyle(card);
+        const gap = parseFloat(getComputedStyle(track).gap) || 16;
+        const cardWidth = card.getBoundingClientRect().width;
+        const amount = Math.round(cardWidth + gap);
+        const delta = direction === "next" ? amount : -amount;
+        track.scrollBy({ left: delta, behavior: "smooth" });
+      }
+
+      async function loadAnimalsPage() {
+        const oceanId = getOceanIdFromUrl();
+        if (!oceanId) {
+          showErrorBanner("Oceano inválido na URL.");
+          return;
+        }
+
+        try {
+          const res = await fetch(`/api/oceano/${oceanId}`);
+          if (!res.ok) throw new Error("Oceano não encontrado");
+          const ocean = await res.json();
+          populatePage(ocean);
+        } catch (err) {
+          console.error(err);
+          showErrorBanner("Erro ao carregar dados.");
+        }
+      }
+
+      function populatePage(ocean) {
+        // header
+        document.getElementById("ocean-name").textContent = ocean.name || "—";
+        document.getElementById("ocean-sub").textContent = ocean.subtitle || "";
+
+        const animals = ocean.animals || {};
+
+        const endangered = safeArray(animals.endangered)
+          .slice(0, MAX_PER_CATEGORY)
+          .map(normalizeAnimal);
+        const important = safeArray(animals.important)
+          .slice(0, MAX_PER_CATEGORY)
+          .map(normalizeAnimal);
+        const rare = safeArray(animals.rare)
+          .slice(0, MAX_PER_CATEGORY)
+          .map(normalizeAnimal);
+        const popular = safeArray(animals.popular)
+          .slice(0, MAX_PER_CATEGORY)
+          .map(normalizeAnimal);
+
+        // counts
+        document.getElementById(
+          "endangered-count"
+        ).textContent = `${endangered.length} registro(s)`;
+        document.getElementById(
+          "important-count"
+        ).textContent = `${important.length} registro(s)`;
+        document.getElementById(
+          "rare-count"
+        ).textContent = `${rare.length} registro(s)`;
+        document.getElementById(
+          "popular-count"
+        ).textContent = `${popular.length} registro(s)`;
+
+        // tracks
+        renderTrack("endangered-track", endangered, "Em extinção");
+        renderTrack("important-track", important, "Importante");
+        renderTrack("rare-track", rare, "Pouco conhecido");
+        renderTrack("popular-track", popular, "Mais conhecido");
+
+        // hide sections without content
+        toggleSectionVisibility(
+          "animals-endangered-section",
+          endangered.length
+        );
+        toggleSectionVisibility("animals-important-section", important.length);
+        toggleSectionVisibility("animals-rare-section", rare.length);
+        toggleSectionVisibility("animals-popular-section", popular.length);
+
+        // set back-to-ocean link
+        const backToOcean = document.getElementById("back-to-ocean");
+        if (backToOcean) backToOcean.href = `/oceano/${ocean.id}`;
+
+        // attach carousel control event handlers
+        document.querySelectorAll(".carousel-button").forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            const target = btn.getAttribute("data-target");
+            const action = btn.getAttribute("data-action");
+            const track = document.getElementById(`${target}-track`);
+            if (track)
+              scrollCarousel(track, action === "next" ? "next" : "prev");
+          });
+        });
+
+        // allow arrow navigation when a track is focused
+        document.querySelectorAll(".carousel-track").forEach((track) => {
+          track.addEventListener("keydown", (e) => {
+            if (e.key === "ArrowRight") {
+              scrollCarousel(track, "next");
+            }
+            if (e.key === "ArrowLeft") {
+              scrollCarousel(track, "prev");
+            }
+          });
+          track.setAttribute("tabindex", "0"); // make it focusable
+        });
+      }
+
+      function normalizeAnimal(a) {
+        if (typeof a === "string") return { name: a, id: slug(a) };
+        if (typeof a === "object") {
+          return {
+            id: a.id || slug(a.name || a.title || ""),
+            name: a.name || a.title || "Nome",
+            img: a.img || a.image || a.photo || a.picture || "",
+            summary: a.summary || a.desc || a.description || "",
+          };
+        }
+        return { id: "", name: "Nome", img: "", summary: "" };
+      }
+
+      function slug(s) {
+        return (s || "")
+          .toString()
+          .toLowerCase()
+          .replace(/[^\w]+/g, "-")
+          .replace(/^-+|-+$/g, "");
+      }
+
+      function renderTrack(trackId, items, categoryLabel) {
+        const track = document.getElementById(trackId);
+        track.innerHTML = "";
+        if (!items || items.length === 0) {
+          const no = document.createElement("div");
+          no.className = "no-items";
+          no.textContent = "Nenhum registro nesta categoria.";
+          track.appendChild(no);
+          return;
+        }
+        items.forEach((it) => {
+          const card = createAnimalCard(it, categoryLabel);
+          track.appendChild(card);
+        });
+      }
+
+      function toggleSectionVisibility(sectionId, count) {
+        const el = document.getElementById(sectionId);
+        if (!el) return;
+        if (!count || count === 0) el.classList.add("hidden");
+        else el.classList.remove("hidden");
+      }
+
+      function showErrorBanner(msg) {
+        const m = document.createElement("div");
+        m.className =
+          "max-w-4xl mx-auto p-4 bg-red-50 text-red-800 rounded mb-6";
+        m.textContent = msg;
+        document.querySelector("main").prepend(m);
+      }
+
+      // init
+      document.addEventListener("DOMContentLoaded", loadAnimalsPage);
+    </script>
+  </body>
+</html>

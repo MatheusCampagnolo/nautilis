@@ -27,12 +27,26 @@ function Routes(app) {
     },
   });
 
+  // página principal do oceano
   app.addRoute("/oceano/:id", {
     get: (req, res) => {
       logger(req, res, () => {});
       const oceanId = req.params.id;
       if (oceanData[oceanId]) {
         res.sendFile("views/oceano.html", { root: __dirname });
+      } else {
+        res.status(404).send("Oceano não encontrado");
+      }
+    },
+  });
+
+  // página de animais do oceano
+  app.addRoute("/oceano/:id/animais", {
+    get: (req, res) => {
+      logger(req, res, () => {});
+      const oceanId = req.params.id;
+      if (oceanData[oceanId]) {
+        res.sendFile("views/oceano-animais.html", { root: __dirname });
       } else {
         res.status(404).send("Oceano não encontrado");
       }

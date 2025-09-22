@@ -489,157 +489,261 @@ const oceanData = {
   arctic: {
     id: "arctic",
     name: "Oceano Glacial Ártico",
-    subtitle: "O menor oceano, caracterizado por águas geladas",
+    subtitle: "O menor oceano, caracterizado por águas geladas e gelo marinho",
     area: "14,1 milhões km²",
     maxDepth: "5.450 metros",
     avgTemp: "-1.8°C",
     volume: "18M km³",
-    description: "Exemplo: descrição geral do Oceano Glacial Ártico.",
-    heroImage: "https://placehold.co/1200x600/png?text=Ártico",
+    description:
+      "O Oceano Glacial Ártico é o menor e mais raso dos oceanos do mundo, localizado inteiramente na região do Círculo Polar Ártico. Sua principal característica é a vasta cobertura de gelo marinho, que se expande e retrai com as estações. Este ambiente extremo é crucial para a regulação do clima global e abriga uma vida selvagem unicamente adaptada ao frio.",
+    heroImage:
+      "https://c.files.bbci.co.uk/A36E/production/_115783814_atlant14b.jpg",
 
     characteristics: [
-      "Exemplo1: característica A do Ártico",
-      "Exemplo2: característica B do Ártico",
+      "É o menor, mais raso e mais frio dos cinco oceanos.",
+      "Grande parte de sua superfície fica congelada durante o ano, com a espessura do gelo podendo passar de 3 metros.",
+      "Cercado pelos continentes da Ásia, Europa e América do Norte.",
+      "A região experimenta o fenômeno do 'Sol da meia-noite' no verão e a 'noite polar' no inverno.",
     ],
 
     marineLife: [
-      "Exemplo1: vida marinha A no Ártico",
-      "Exemplo2: vida marinha B no Ártico",
+      "Ecossistema altamente dependente do gelo marinho para caça, reprodução e descanso de espécies.",
+      "A base da cadeia alimentar inclui plâncton e crustáceos que florescem nas bordas do gelo durante o verão.",
+      "Habitat para mamíferos icônicos como ursos-polares, morsas, focas e várias espécies de baleias.",
     ],
 
-    countries: ["Exemplo1: País A", "Exemplo2: País B"],
+    countries: [
+      "Canadá, Estados Unidos (Alasca), Groenlândia (Dinamarca), Rússia, Noruega e Islândia.",
+    ],
 
-    rivers: ["Exemplo1: Rio A", "Exemplo2: Rio B"],
+    rivers: [
+      "América do Norte: Rio Mackenzie e Rio Yukon.",
+      "Ásia: Rio Ob, Rio Ienissei e Rio Lena.",
+    ],
 
     animals: {
       endangered: [
         {
-          name: "Exemplo Extinto 1",
-          img: "https://placehold.co/400x250/png?text=Animal+1",
-          summary: "exemplo1",
+          name: "Urso-polar (Ursus maritimus)",
+          img: "https://static.todamateria.com.br/upload/ur/so/ursopolarreproducao-cke.jpg",
+          summary:
+            "O maior carnívoro terrestre, depende criticamente do gelo marinho para caçar focas. A perda de seu habitat devido ao aquecimento global é a principal ameaça à sua sobrevivência.",
+        },
+        {
+          name: "Morsa (Odobenus rosmarus)",
+          img: "https://www.infoescola.com/wp-content/uploads/2008/05/morsa.jpg",
+          summary:
+            "Grande mamífero marinho que utiliza o gelo como plataforma para descansar e dar à luz. O derretimento do gelo força grandes grupos a se aglomerarem em terra, aumentando o risco de mortalidade.",
+        },
+        {
+          name: "Bacalhau-do-ártico (Gadus morhua)",
+          img: "https://www.estadao.com.br/resizer/v2/JFLCGOBJJRKIPCZ22XPF74XDEE.jpg?auth=3206cbf5fceccaa9c942c7d5208f22ce86c68d0149ed7c5715173761f726b312",
+          summary:
+            "Peixe de águas frias e profundas, está ameaçado pela pesca predatória intensa e por seu ciclo reprodutivo lento, que dificulta a recuperação de suas populações.",
         },
       ],
       important: [
         {
-          name: "Exemplo Importante 1",
-          img: "https://placehold.co/400x250/png?text=Animal+2",
-          summary: "exemplo1",
+          name: "Foca-anelada (Pusa hispida)",
+          img: "https://blogdopescador.com/wp-content/uploads/2022/11/foca-anelada-4.jpg",
+          summary:
+            "A menor e mais comum foca do Ártico, é a principal presa dos ursos-polares. Depende do gelo para reprodução e descanso, mantendo buracos de respiração no gelo espesso.",
+        },
+        {
+          name: "Baleia-da-groenlândia (Balaena mysticetus)",
+          img: "https://imgsapp.revistaencontro.com.br/app/noticia_152466458717/2018/04/06/162187/20180406165912359614e.jpg",
+          summary:
+            "Uma das espécies mais longevas, podendo viver mais de 200 anos. Usa sua cabeça robusta para quebrar o gelo e respirar, permanecendo no Ártico durante todo o ano.",
         },
       ],
       rare: [
         {
-          name: "Exemplo Raro 1",
-          img: "https://placehold.co/400x250/png?text=Animal+3",
-          summary: "exemplo1",
+          name: "Narval (Monodon monoceros)",
+          img: "https://i.pinimg.com/564x/f4/30/f2/f430f20852d285d23e1185f09edc74a9.jpg",
+          summary:
+            "Conhecido como 'unicórnio do mar', o macho possui uma presa em espiral que pode atingir 3 metros. É um dente modificado usado para navegação, alimentação e possivelmente para rituais de acasalamento.",
         },
       ],
       popular: [
         {
-          name: "Exemplo Popular 1",
-          img: "https://placehold.co/400x250/png?text=Animal+4",
-          summary: "exemplo1",
+          name: "Raposa-do-ártico (Vulpes lagopus)",
+          img: "https://cdn0.peritoanimal.com.br/pt/razas/3/7/7/raposa-do-artico_773_4_600.jpg",
+          summary:
+            "Pequeno mamífero adaptado ao frio extremo. Sua pelagem muda de cor com as estações — branca no inverno e acinzentada no verão — para uma camuflagem perfeita na tundra.",
+        },
+        {
+          name: "Beluga (Delphinapterus leucas)",
+          img: "https://inaturalist-open-data.s3.amazonaws.com/photos/116180867/original.jpg",
+          summary:
+            "Também chamada de baleia-branca, é conhecida por sua cor distintiva e vocalizações complexas, que lhe renderam o apelido de 'canário do mar'. Vive em grupos sociais e habita as águas costeiras do Ártico.",
         },
       ],
     },
 
     temperature: {
-      Primavera: "exemplo1",
-      Verão: "exemplo2",
-      Outono: "exemplo3",
-      Inverno: "exemplo4",
+      Primavera: "Temperatura da água: 0°C a 2°C",
+      Verão: "Temperatura da água: 2°C a 4°C",
+      Outono: "Temperatura da água: 0°C a 2°C",
+      Inverno: "Temperatura da água: -1°C a 0°C",
     },
 
-    currents: ["Exemplo1: Corrente A", "Exemplo2: Corrente B"],
+    currents: [
+      "A circulação do Oceano Ártico é dominada por duas principais correntes: o Giro de Beaufort, um grande sistema circular de correntes no oeste, e a Corrente Transpolar, que flui do setor siberiano em direção ao Estreito de Fram, a leste da Groenlândia. Essas correntes são responsáveis pelo transporte de gelo marinho e água doce pela bacia ártica, influenciando o clima e os ecossistemas locais.",
+    ],
 
     funFacts: [
-      "Exemplo1: curiosidade A sobre o Ártico",
-      "Exemplo2: curiosidade B sobre o Ártico",
+      "🧊 É o menor dos cinco oceanos, cobrindo cerca de 3% da superfície da Terra.",
+      "🐻 O gelo marinho, vital para espécies como o urso-polar, pode ultrapassar 3 metros de espessura no inverno.",
+      "🧭 Com o degelo, novas rotas marítimas, como a Passagem do Noroeste, estão se tornando navegáveis, encurtando as viagens comerciais.",
+      "🔬 Cientistas monitoram o derretimento do gelo e a acidificação do oceano para prever os impactos das mudanças climáticas globais.",
     ],
 
     historicalFacts: [
-      "Exemplo1: fato histórico A do Ártico",
-      "Exemplo2: fato histórico B do Ártico",
+      "Diferente de outros oceanos que foram palco de grandes navegações comerciais e disputas imperiais, a história do Ártico é profundamente marcada pela resiliência humana e adaptação ao ambiente. Durante milênios, a região tem sido habitada por povos indígenas como os Inuítes, Lapões, Iakoutes e Nenets, que desenvolveram um conhecimento íntimo e sofisticado do ecossistema gelado.</br></br>Esses povos criaram técnicas de sobrevivência notáveis: os iglus, construídos com blocos de neve compacta, serviam como abrigos eficientes que isolavam do frio extremo; vestimentas feitas de peles de animais como caribu e foca garantiam proteção térmica; e óculos de neve, esculpidos em osso ou madeira, protegiam os olhos da intensa luz refletida no gelo. A caça e a pesca eram centrais, utilizando caiaques para uma aproximação silenciosa das presas e cães para farejar focas sob o gelo. Sua economia era de subsistência, baseada no aproveitamento integral dos recursos naturais e na cooperação comunitária para garantir a sobrevivência durante os rigorosos invernos.</br></br>A exploração por parte de nações não-árticas intensificou-se apenas nos últimos séculos, inicialmente em busca de novas rotas comerciais (como a Passagem do Noroeste) e, mais recentemente, impulsionada pela descoberta de vastos recursos naturais, como petróleo, gás e minerais. Essa nova fase histórica trouxe profundas mudanças sociais e econômicas para a região, além de desafios geopolíticos e ambientais crescentes, à medida que o derretimento do gelo abre o oceano para uma maior atividade humana.",
     ],
 
-    otherInfo: "Exemplo: notas adicionais sobre o Ártico",
+    otherInfo: [
+      "A economia tradicional dos povos árticos é baseada na caça e pesca de subsistência. Recentemente, a exploração de recursos naturais por empresas e governos tem transformado a dinâmica econômica e social da região.",
+    ],
 
-    sources: ["https://example.com/arctic-1"],
+    sources: [
+      "https://www.temperaturadomar.pt/mares-e-oceanos/oceano-rtico/",
+      "https://www.todamateria.com.br/clima-polar/",
+      "https://education.nationalgeographic.org/resource/arctic-ocean",
+      "https://arctic.noaa.gov/Report-Card",
+      "https://www.cia.gov/the-world-factbook/region/arctic-ocean/",
+      "https://animalia.bio/pt/narwhal",
+      "https://animalia.bio/pt/arctic-fox",
+    ],
   },
 
   southern: {
     id: "southern",
     name: "Oceano Austral",
-    subtitle: "O oceano que circunda a Antártida",
+    subtitle: "O oceano que circunda a Antártida e regula o clima global",
     area: "20,3 milhões km²",
     maxDepth: "7.235 metros",
     avgTemp: "-1.0°C",
     volume: "71M km³",
-    description: "Exemplo: descrição geral do Oceano Austral.",
-    heroImage: "https://placehold.co/1200x600/png?text=Austral",
+    description:
+      "Oficialmente reconhecido como o quinto oceano, o Oceano Austral é a massa de água que circunda a Antártida. É definido pela poderosa Corrente Circumpolar Antártica, que o isola termicamente e cria um ecossistema único. Suas águas geladas são extremamente produtivas e desempenham um papel vital na circulação oceânica e na regulação do clima do planeta.",
+    heroImage:
+      "https://services.meteored.com/img/article/reconoce-la-national-geographic-el-quinto-oceano-344671-1_1280.jpg",
 
     characteristics: [
-      "Exemplo1: característica A do Austral",
-      "Exemplo2: característica B do Austral",
+      "É o único oceano que circunda completamente um continente e toca outros três oceanos (Atlântico, Pacífico e Índico).",
+      "Dominado pela Corrente Circumpolar Antártica, a maior corrente oceânica do mundo.",
+      "Contém cerca de 90% de todo o gelo do planeta e 70% da água doce em estado sólido.",
+      "Caracterizado por ventos fortes e constantes, conhecidos como 'Roaring Forties', 'Furious Fifties' e 'Screaming Sixties'.",
     ],
 
     marineLife: [
-      "Exemplo1: vida marinha A no Austral",
-      "Exemplo2: vida marinha B no Austral",
+      "Ecossistema marinho altamente produtivo, sustentado pela abundância de krill, a base da cadeia alimentar.",
+      "Habitat para uma vasta gama de espécies, incluindo pinguins, focas, baleias, albatrozes e a lula-colossal.",
+      "A vida marinha é protegida por acordos internacionais, como o Tratado da Antártida.",
     ],
 
-    countries: ["Exemplo1: País A"],
+    countries: [
+      "Não banha diretamente nenhum país. Circunda o continente da Antártida, que é administrado internacionalmente pelo Tratado da Antártida, dedicado à paz e à ciência.",
+    ],
 
-    rivers: ["Exemplo1: Rio A"],
+    rivers: [
+      "Rio Onyx, o maior rio da Antártida, que flui apenas durante o verão, e outros rios sazonais como o Rio Alph.",
+    ],
 
     animals: {
       endangered: [
         {
-          name: "Exemplo Extinto 1",
-          img: "https://placehold.co/400x250/png?text=Animal+1",
-          summary: "exemplo1",
+          name: "Baleia-azul (Balaenoptera musculus)",
+          img: "https://img.nsctotal.com.br/wp-content/uploads/2025/03/A-baleia-azul-pode-engolir-4-toneladas-de-krill-por-dia-e-ainda-manter-a-elegancia-no-nado.jpg",
+          summary:
+            "O maior animal do planeta, foi levado à beira da extinção pela caça comercial. Hoje, enfrenta ameaças como colisões com navios, poluição e mudanças climáticas que afetam sua fonte de alimento, o krill.",
+        },
+        {
+          name: "Pinguim-imperador (Aptenodytes forsteri)",
+          img: "https://static.todamateria.com.br/upload/pi/ng/pinguimimperador-cke.jpg",
+          summary:
+            "A maior espécie de pinguim, reproduz-se no gelo marinho durante o inverno antártico. O aquecimento global ameaça derreter essas plataformas de gelo, colocando em risco a sobrevivência de suas colônias.",
         },
       ],
       important: [
         {
-          name: "Exemplo Importante 1",
-          img: "https://placehold.co/400x250/png?text=Animal+2",
-          summary: "exemplo1",
+          name: "Krill antártico (Euphausia superba)",
+          img: "https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/krill01.jpg?w=1900&h=1295",
+          summary:
+            "Pequeno crustáceo que forma a base de toda a cadeia alimentar do Oceano Austral, servindo de alimento para baleias, focas, pinguins e peixes. Sua abundância é vital para a saúde do ecossistema.",
+        },
+        {
+          name: "Foca-leopardo (Hydrurga leptonyx)",
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Hydrurga_leptonyx_edit1.jpg/1200px-Hydrurga_leptonyx_edit1.jpg",
+          summary:
+            "Um dos principais predadores da Antártida, conhecido por sua agilidade e mandíbulas poderosas. Caça pinguins, krill e outras focas, desempenhando um papel crucial no controle populacional.",
         },
       ],
       rare: [
         {
-          name: "Exemplo Raro 1",
-          img: "https://placehold.co/400x250/png?text=Animal+3",
-          summary: "exemplo1",
+          name: "Lula-colossal (Mesonychoteuthis hamiltoni)",
+          img: "https://i.ytimg.com/vi/i8_4QiA-yuU/mqdefault.jpg",
+          summary:
+            "A maior espécie de lula em massa corporal, habita as profundezas escuras e geladas. Possui os maiores olhos do reino animal e tentáculos com ganchos giratórios. Raramente é vista por humanos.",
+        },
+        {
+          name: "Peixe-gelo (Channichthyidae)",
+          img: "https://blogdopescador.com/wp-content/uploads/2022/09/peixe-gelo.jpg",
+          summary:
+            "Grupo de peixes notável por não possuir hemoglobina no sangue, o que o torna transparente. Absorve oxigênio diretamente da água fria e rica em O2 do Oceano Austral.",
         },
       ],
       popular: [
         {
-          name: "Exemplo Popular 1",
-          img: "https://placehold.co/400x250/png?text=Animal+4",
-          summary: "exemplo1",
+          name: "Pinguim-de-adélia (Pygoscelis adeliae)",
+          img: "https://amda.org.br/wp-content/uploads/2023/12/pinguim1.jpg",
+          summary:
+            "Uma das espécies de pinguim mais icônicas e estudadas da Antártida. Constrói seus ninhos com pedras em áreas costeiras livres de gelo durante o verão.",
+        },
+        {
+          name: "Albatroz-errante (Diomedea exulans)",
+          img: "https://s3.amazonaws.com/media.wikiaves.com.br/images/905/509052g_3e6f5a493d883246dcfc6042384ca994.jpg",
+          summary:
+            "Com a maior envergadura de asas entre todas as aves, pode passar anos no mar, planando sobre as águas tempestuosas do Oceano Austral em busca de alimento.",
         },
       ],
     },
 
     temperature: {
-      Primavera: "exemplo1",
-      Verão: "exemplo2",
-      Outono: "exemplo3",
-      Inverno: "exemplo4",
+      Primavera: "Temperatura da água: -1°C a 0°C",
+      Verão: "Temperatura da água: -1°C a 2°C",
+      Outono: "Temperatura da água: -2°C a -1°C",
+      Inverno: "Temperatura da água: -2°C a -1°C",
     },
 
-    currents: ["Exemplo1: Corrente A"],
+    currents: [
+      "A característica definidora do Oceano Austral é a Corrente Circumpolar Antártica (CCA). É a corrente mais forte e volumosa do mundo, fluindo de oeste para leste ao redor da Antártida. Ela conecta as bacias dos oceanos Atlântico, Pacífico e Índico, desempenhando um papel fundamental na circulação global de calor, nutrientes e carbono, e isolando termicamente o continente antártico.",
+    ],
 
-    funFacts: ["Exemplo1: curiosidade A sobre o Austral"],
+    funFacts: [
+      "🌊 É o quarto maior oceano do planeta, cobrindo cerca de 6% da superfície da Terra.",
+      "❄️ Contém 90% do gelo do planeta. Se todo ele derretesse, o nível dos oceanos subiria mais de 60 metros.",
+      "💨 É conhecido por ter os ventos mais fortes e constantes da Terra, criando algumas das condições marítimas mais desafiadoras.",
+      "🔄 Sua Corrente Circumpolar transporta mais de 100 vezes o fluxo de todos os rios do mundo combinados.",
+    ],
 
-    historicalFacts: ["Exemplo1: fato histórico A do Austral"],
+    historicalFacts: [
+      "A história do Oceano Austral é, em grande parte, a história de seu próprio reconhecimento como uma entidade distinta. Durante séculos, até o início do século XX, suas águas eram simplesmente consideradas as extensões mais meridionais dos oceanos Atlântico, Pacífico e Índico. A ideia de um oceano antártico separado apareceu em publicações da Organização Hidrográfica Internacional (OHI) em 1937, mas foi retirada em 1953 devido a debates sobre seus limites exatos. Somente na virada do milênio, em 2000, a OHI reafirmou sua existência, definindo-o pelas águas ao sul do paralelo 60°S, unificadas pela poderosa Corrente Circumpolar Antártica.</br></br>Sua história moderna é única e não se baseia em rotas comerciais ou conflitos, mas sim em exploração científica e cooperação internacional. O ponto de virada foi o Tratado da Antártida de 1959, que designou o continente e suas águas circundantes como uma reserva dedicada à paz e à ciência, proibindo atividades militares. Esse compromisso foi aprofundado com o Protocolo de Madri sobre Proteção Ambiental, de 1991, que baniu indefinidamente a exploração de recursos minerais e estabeleceu um dos regimes de proteção ambiental mais rigorosos do planeta.</br></br>Assim, o Oceano Austral se diferencia por uma história de descoberta tardia e por ser um exemplo global de governança compartilhada, onde a prioridade é a preservação de um ecossistema vital para o equilíbrio climático da Terra, em vez da exploração econômica.",
+    ],
 
-    otherInfo: ["Exemplo1: informação extra sobre o Austral"],
+    otherInfo: [
+      "A região é protegida pelo Protocolo de Madri, que impõe rigorosas avaliações de impacto ambiental para todas as atividades humanas, incluindo pesquisa e turismo, para preservar seu ecossistema único e frágil.",
+    ],
 
     sources: [
-      { title: "Austral - fonte exemplo", url: "https://example.com/southern" },
-      "https://example.com/southern-2",
+      "https://www.temperaturadomar.pt/mares-e-oceanos/oceano-antartico/",
+      "https://www.ufrgs.br/inctcriosfera/arquivos/FactSheetAntarticaBrasil.pdf",
+      "https://www.antarctica.gov.au/about-antarctica/environment/oceans/southern-ocean/",
+      "https://www.scar.org/science/antarctic-climate-change-and-the-environment/",
+      "https://oceanservice.noaa.gov/facts/southern_ocean.html",
+      "https://animalia.bio/pt/colossal-squid",
+      "https://animaldiversity.org/accounts/Diomedea_exulans/",
     ],
   },
 };

@@ -1,11 +1,14 @@
+const path = require('path');
 const oceanData = require("./oceanData");
 const logger = require("./middlewares/logger");
+
+const VIEWS_ROOT = path.resolve(__dirname, '..', 'views');
 
 function Routes(app) {
   app.addRoute("/", {
     get: (req, res) => {
       logger(req, res, () => {});
-      res.sendFile("views/index.html", { root: __dirname });
+      res.sendFile("index.html", { root: VIEWS_ROOT });
     },
     post: (req, res) => {
       logger(req, res, () => {});

@@ -19,14 +19,14 @@ function Routes(app) {
   app.addRoute("/mapa", {
     get: (req, res) => {
       logger(req, res, () => {});
-      res.sendFile("views/mapa.html", { root: __dirname });
+      res.sendFile("mapa.html", { root: VIEWS_ROOT });
     },
   });
 
   app.addRoute("/lista-oceanos", {
     get: (req, res) => {
       logger(req, res, () => {});
-      res.sendFile("views/lista-oceanos.html", { root: __dirname });
+      res.sendFile("lista-oceanos.html", { root: VIEWS_ROOT });
     },
   });
 
@@ -36,7 +36,7 @@ function Routes(app) {
       logger(req, res, () => {});
       const oceanId = req.params.id;
       if (oceanData[oceanId]) {
-        res.sendFile("views/oceano.html", { root: __dirname });
+        res.sendFile("oceano.html", { root: VIEWS_ROOT });
       } else {
         res.status(404).send("Oceano não encontrado");
       }
@@ -49,7 +49,7 @@ function Routes(app) {
       logger(req, res, () => {});
       const oceanId = req.params.id;
       if (oceanData[oceanId]) {
-        res.sendFile("views/oceano-animais.html", { root: __dirname });
+        res.sendFile("oceano-animais.html", { root: VIEWS_ROOT });
       } else {
         res.status(404).send("Oceano não encontrado");
       }

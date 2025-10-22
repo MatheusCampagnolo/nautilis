@@ -4,7 +4,7 @@ const app = kaelum();
 app.setConfig({
 });
 
-const routes = require("../routes");
+const routes = require("./routes");
 routes(app);
 
 module.exports = app;

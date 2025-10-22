@@ -2,9 +2,9 @@
   "name": "my-web-app",
   "version": "1.0.0",
   "description": "Project generated with Kaelum framework.",
-  "main": "app.js",
+  "main": "node.js",
   "scripts": {
-    "start": "node api/index.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "kaelum": "^1.1.0"

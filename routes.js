@@ -2,7 +2,7 @@ const path = require('path');
 const oceanData = require("./oceanData");
 const logger = require("./middlewares/logger");
 
-const VIEWS_ROOT = path.resolve(__dirname, '..', 'views');
+const VIEWS_ROOT = path.join(__dirname, 'views');
 
 function Routes(app) {
   app.addRoute("/", {

@@ -16,7 +16,7 @@ const zoomResetBtn = document.getElementById('zoom-reset');
 const oceanImages = {
     pacific: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=600',
     atlantic: 'https://images.unsplash.com/photo-1505142468610-359e7d316be0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=600',
-    indian: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=600',
+    indian: 'https://pelorus-statamic.s3.eu-west-2.amazonaws.com/images/indian-ocean-hero-beach-view.jpg',
     arctic: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=600',
     southern: 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=600'
 };

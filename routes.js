@@ -62,6 +62,14 @@ function Routes(app) {
     }
   });
 
+  app.get("/sobre", logger, (req, res) => {
+    res.sendFile("sobre.html", { root: VIEWS_ROOT });
+  });
+
+  app.get("/quem-somos", logger, (req, res) => {
+    res.sendFile("quem-somos.html", { root: VIEWS_ROOT });
+  });
+
   // Tratamento de erro 404 para rotas não definidas
   app.use((req, res, next) => {
     res.status(404).send("Página não encontrada!");

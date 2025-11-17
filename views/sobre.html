@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Sobre — Nautilis</title>
+    <meta
+      name="description"
+      content="Sobre o projeto Nautilis - propósito, objetivos e conceito."
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "ocean-deep": "#003366",
+              "ocean-blue": "#0066cc",
+              "ocean-light": "#e6f3ff",
+              "ocean-medium": "#004d99",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-white text-gray-800">
+    <!-- NAV (mesmo estilo do site) -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+          <a href="/" class="flex items-center space-x-3">
+            <div
+              class="w-12 h-12 bg-ocean-blue rounded-full flex items-center justify-center"
+            >
+              <span class="text-white text-xl">🌊</span>
+            </div>
+            <h1 class="text-2xl font-bold text-ocean-deep">Nautilis</h1>
+          </a>
+
+          <div class="hidden md:flex space-x-8">
+            <a
+              href="/"
+              class="font-medium text-ocean-deep hover:text-ocean-blue transition-colors"
+              >Início</a
+            >
+            <a
+              href="/sobre"
+              class="font-medium text-ocean-deep hover:text-ocean-blue transition-colors"
+              >Sobre</a
+            >
+            <a
+              href="/quem-somos"
+              class="font-medium text-ocean-deep hover:text-ocean-blue transition-colors"
+              >Quem Somos</a
+            >
+            <a
+              href="/mapa"
+              class="font-medium text-ocean-deep hover:text-ocean-blue transition-colors"
+              >Mapa Interativo</a
+            >
+            <a
+              href="/lista-oceanos"
+              class="font-medium text-ocean-deep hover:text-ocean-blue transition-colors"
+              >Lista de Oceanos</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="bg-gradient-to-r from-ocean-light to-white py-16">
+      <div class="max-w-5xl mx-auto px-4 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-ocean-deep mb-4">
+          Sobre o Nautilis
+        </h2>
+        <!-- EDIT HERE: descrição curta do projeto (1-2 linhas) -->
+        <p class="text-lg text-gray-700">
+          Nautilis é uma plataforma educativa que organiza e apresenta
+          informações sobre os oceanos de forma visual, acessível e pensada para
+          estudantes e professores.
+        </p>
+      </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-12">
+      <!-- Problema / motivação -->
+      <section class="mb-10">
+        <h3 class="text-2xl font-semibold text-ocean-deep mb-4">Motivação</h3>
+        <!-- EDIT HERE: problema / motivação (substitua o parágrafo abaixo se quiser) -->
+        <p class="text-gray-700 leading-relaxed">
+          Muitos recursos sobre oceanografia e meio ambiente estão fragmentados,
+          técnicos ou pouco atrativos para estudantes. Isso pode dificultar a
+          pesquisa escolar e reduzir o interesse por temas essenciais como
+          mudanças climáticas e conservação marinha. O Nautilis foi criado para
+          centralizar conteúdo confiável em páginas claras, visuais e didáticas
+          — ajudando estudantes a aprender, comparar regiões e preparar
+          trabalhos de forma mais eficiente.
+        </p>
+      </section>
+
+      <!-- Conceito e utilidade -->
+      <section class="mb-10">
+        <h3 class="text-2xl font-semibold text-ocean-deep mb-4">
+          Conceito e utilidade
+        </h3>
+        <!-- EDIT HERE: campo explicativo sobre o conceito -->
+        <p class="text-gray-700 leading-relaxed mb-4">
+          O Nautilis combina apresentação visual (mapas, imagens e cards) com
+          textos concisos e recursos multimídia para transformar dados
+          oceanográficos em conteúdo acessível. A ideia é reduzir a barreira
+          inicial do estudo — organizar fatos, mapas, fauna, correntes e eventos
+          históricos em um formato navegável e agradável.
+        </p>
+
+        <ul class="list-disc list-inside text-gray-700 space-y-2">
+          <!-- EDIT HERE: bullets de objetivos / benefícios (adicione/edite) -->
+          <li>
+            <strong>Facilitar o estudo:</strong> páginas objetivas por oceano
+            com sumário, temperatura, correntes e fauna.
+          </li>
+          <li>
+            <strong>Recurso para professores:</strong> material de apoio visual
+            para aulas e atividades.
+          </li>
+          <li>
+            <strong>Centralização:</strong> reduzir a dispersão de fontes e
+            estruturar o conteúdo de forma pedagógica.
+          </li>
+          <li>
+            <strong>Engajamento:</strong> layout atrativo para tornar a pesquisa
+            mais convidativa a estudantes.
+          </li>
+        </ul>
+      </section>
+
+      <!-- Objetivos -->
+      <section class="mb-10">
+        <h3 class="text-2xl font-semibold text-ocean-deep mb-4">
+          Objetivos do projeto
+        </h3>
+        <!-- EDIT HERE: objetivos (curtos) -->
+        <ol class="list-decimal list-inside text-gray-700 space-y-2">
+          <li>
+            Construir uma coleção estruturada e navegável sobre cada oceano
+            (dados, fauna, curiosidades, histórico).
+          </li>
+          <li>
+            Fornecer ferramentas simples (player de áudio, páginas de
+            visualização, sumário) para apoiar diferentes estilos de
+            aprendizagem.
+          </li>
+          <li>
+            Promover a cultura oceânica nas escolas por meio de recursos
+            reutilizáveis e fáceis de integrar em aulas e trabalhos.
+          </li>
+        </ol>
+      </section>
+
+      <!-- Público-alvo / impacto educacional -->
+      <section class="mb-10">
+        <h3 class="text-2xl font-semibold text-ocean-deep mb-4">
+          Público-alvo e impacto
+        </h3>
+        <!-- EDIT HERE: público-alvo / impacto -->
+        <p class="text-gray-700 leading-relaxed">
+          O foco principal são estudantes do ensino fundamental e médio,
+          professores e equipes pedagógicas que desejam um recurso prático para
+          apoiar aulas sobre geografia, ciências e mudanças climáticas. Ao
+          centralizar conteúdo e oferecer navegação guiada, o Nautilis pretende
+          aumentar a curiosidade científica e facilitar tarefas de pesquisa
+          escolar.
+        </p>
+      </section>
+
+      <!-- Como usar / recomendações rápidas -->
+      <section class="mb-12">
+        <h3 class="text-2xl font-semibold text-ocean-deep mb-4">Como usar</h3>
+        <p class="text-gray-700 leading-relaxed mb-3">
+          A página de cada oceano possui um sumário que leva diretamente para
+          seções (países, correntes, fauna, temperatura, histórico). Use o botão
+          “Ver mais” na seção de animais para acessar a página dedicada à fauna,
+          ou o player de áudio no topo para ouvir um resumo em formato podcast
+          (se disponível).
+        </p>
+      </section>
+
+      <!-- CTA / links rápidos -->
+      <section class="mb-16">
+        <div class="flex flex-col sm:flex-row gap-4 items-center">
+          <a
+            href="/mapa"
+            class="bg-ocean-blue text-white px-5 py-3 rounded-full hover:bg-ocean-medium transition-colors"
+            >Explorar mapa</a
+          >
+          <a
+            href="/lista-oceanos"
+            class="border border-ocean-blue text-ocean-blue px-5 py-3 rounded-full hover:bg-ocean-light transition-colors"
+            >Lista de oceanos</a
+          >
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-ocean-deep text-white py-16">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8">
+          <div class="col-span-2">
+            <div class="flex items-center space-x-3 mb-6">
+              <div
+                class="w-12 h-12 bg-ocean-blue rounded-full flex items-center justify-center"
+              >
+                <span class="text-white text-xl">🌊</span>
+              </div>
+              <h3 class="text-2xl font-bold">Nautilis</h3>
+            </div>
+            <p class="text-gray-300 mb-6 max-w-md">
+              Explore os oceanos do mundo de forma interativa e educativa.
+              Descubra as maravilhas que cobrem nosso planeta azul.
+            </p>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Explorar</h4>
+            <ul class="space-y-2 text-gray-300">
+              <li>
+                <a href="/mapa" class="hover:text-white transition-colors"
+                  >Mapa Interativo</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/lista-oceanos"
+                  class="hover:text-white transition-colors"
+                  >Lista de Oceanos</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Recursos</h4>
+            <ul class="space-y-2 text-gray-300">
+              <li>
+                <a href="/sobre" class="hover:text-white transition-colors"
+                  >Sobre</a
+                >
+              </li>
+              <li>
+                <a href="/quem-somos" class="hover:text-white transition-colors"
+                  >Quem somos</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-600 pt-8 mt-12 text-center text-gray-400"
+        >
+          <p>&copy; 2025 Nautilis. Todos os direitos reservados.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

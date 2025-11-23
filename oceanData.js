@@ -7,6 +7,9 @@ const oceanData = {
     maxDepth: "11.034 metros",
     avgTemp: "4.0°C",
     volume: "710M km³",
+
+    audio: "https://res.cloudinary.com/dcioeinkm/video/upload/v1763929468/Pac%C3%ADfico_O_Gigante_que_Molda_o_Mundo_ldejle.mp4",
+
     description:
       "O Oceano Pacífico é o maior e mais profundo dos cinco oceanos da Terra, cobrindo cerca de um terço da superfície do planeta. Ele se estende da costa oeste das Américas até a costa leste da Ásia e da Oceania, conectando diversos continentes, culturas e ecossistemas.",
     heroImage:
@@ -182,6 +185,9 @@ const oceanData = {
     maxDepth: "8.486 metros",
     avgTemp: "3.9°C",
     volume: "310M km³",
+
+    audio: "https://res.cloudinary.com/dcioeinkm/video/upload/v1763929466/Atl%C3%A2ntico_O_Segredo_da_Maior_Montanha_Submersa_acyd9j.mp4",
+
     description:
       "O Oceano Atlântico é o segundo maior oceano do mundo, separando a Europa e África das Américas.",
     heroImage:
@@ -302,8 +308,11 @@ const oceanData = {
     otherInfo: [],
 
     sources: [
-      { title: "Fonte Exemplo Atlântico", url: "https://example.com/atlantic" },
-      "https://example.com/atlantic-2",
+      "https://brasilescola.uol.com.br/geografia/oceano-atlantico.htm",
+      "https://pt.wikipedia.org/wiki/Oceano_Atl%C3%A2ntico",
+      "https://www.nationalgeographic.com/environment/article/atlantic-ocean",
+      "https://www.britannica.com/place/Atlantic-Ocean",
+      "https://dados.gov.br/dados/conjuntos-dados/oceanografia",
     ],
   },
 
@@ -315,6 +324,9 @@ const oceanData = {
     maxDepth: "7.725 metros",
     avgTemp: "17°C",
     volume: "292M km³",
+
+    audio: "https://res.cloudinary.com/dcioeinkm/video/upload/v1763929469/%C3%8Dndico_o_Oceano_Quente_Mon%C3%A7%C3%B5es_e_Tsunamis_gxwaja.mp4",
+
     description:
       "O Oceano Índico é o terceiro maior oceano do planeta, cercado em grande parte por continentes. Suas águas superficiais são as mais quentes entre os oceanos, desempenhando papel central em rotas comerciais históricas e na conexão cultural entre África, Ásia e Oceania.",
     heroImage:
@@ -494,6 +506,9 @@ const oceanData = {
     maxDepth: "5.450 metros",
     avgTemp: "-1.8°C",
     volume: "18M km³",
+
+    audio: "https://res.cloudinary.com/dcioeinkm/video/upload/v1763930999/%C3%81rtico_o_termostato_da_Terra_em_risco_muze7e.mp4",
+
     description:
       "O Oceano Glacial Ártico é o menor e mais raso dos oceanos do mundo, localizado inteiramente na região do Círculo Polar Ártico. Sua principal característica é a vasta cobertura de gelo marinho, que se expande e retrai com as estações. Este ambiente extremo é crucial para a regulação do clima global e abriga uma vida selvagem unicamente adaptada ao frio.",
     heroImage:
@@ -625,6 +640,9 @@ const oceanData = {
     maxDepth: "7.235 metros",
     avgTemp: "-1.0°C",
     volume: "71M km³",
+
+    audio: "https://res.cloudinary.com/dcioeinkm/video/upload/v1763930994/Oceano_Austral_Cora%C3%A7%C3%A3o_Do_Clima_Global_o4mlrd.mp4",
+
     description:
       "Oficialmente reconhecido como o quinto oceano, o Oceano Austral é a massa de água que circunda a Antártida. É definido pela poderosa Corrente Circumpolar Antártica, que o isola termicamente e cria um ecossistema único. Suas águas geladas são extremamente produtivas e desempenham um papel vital na circulação oceânica e na regulação do clima do planeta.",
     heroImage:

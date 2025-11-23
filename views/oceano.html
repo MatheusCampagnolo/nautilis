@@ -217,6 +217,28 @@
           ></p>
         </section>
 
+        <!-- Audio -->
+        <section id="section-audio" class="mb-8 hidden">
+          <div
+            class="bg-ocean-light border border-ocean-blue/20 rounded-2xl p-6 flex flex-col items-center justify-center shadow-sm"
+          >
+            <div class="flex items-center gap-3 mb-4">
+              <span class="text-2xl">🔊</span>
+              <h3 class="text-xl font-bold text-ocean-deep">
+                Ouça o oceano!
+              </h3>
+            </div>
+            <audio
+              id="ocean-audio"
+              controls
+              class="w-full max-w-2xl h-10 accent-ocean-blue"
+            >
+              Seu navegador não suporta o elemento de áudio.
+            </audio>
+            <p class="text-sm text-gray-500 mt-2">Veja mais sobre o oceano em nossa versão podcast.</p>
+          </div>
+        </section>
+
         <!-- SUMÁRIO / ANCORAS (ordenado conforme a página) -->
         <section id="section-summary" class="mb-8">
           <div
@@ -684,6 +706,20 @@
           )
           .join("");
 
+        // Audio (if available)
+        const audioSection = document.getElementById("section-audio");
+        const audioElement = document.getElementById("ocean-audio");
+
+        if (ocean.audio) {
+          audioElement.src = ocean.audio;
+          audioSection.classList.remove("hidden");
+        } else {
+          audioSection.classList.add("hidden");
+          // Pausa o áudio se trocar de página/oceano para garantir
+          audioElement.pause();
+          audioElement.src = "";
+        }
+
         // description
         document.getElementById("ocean-description").textContent =
           ocean.description || "";
@@ -870,6 +906,11 @@
             id: "section-stats",
             label: "Dados principais",
             present: stats.length > 0,
+          },
+          {
+            id: "section-audio",
+            label: "Áudio",
+            present: !!ocean.audio, // Só aparece no sumário se tiver áudio
           },
           {
             id: "section-description",
